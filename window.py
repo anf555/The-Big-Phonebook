@@ -39,11 +39,10 @@ def search_number():
         messagebox.showwarning("The Big Phonebook", "Please input number!")
     else:
         c.execute("SELECT * FROM data WHERE number=?", (var8.get(),))
-        Label(tab1, text="Result : ").grid(row=2, column=1, pady=20)
         for row in c.fetchall():
             tempdata = row
-            for list in tempdata:
-                            ttk.Label(tab1, text=list).grid( column=1)
+            var8.set("")
+            messagebox.showinfo(str("The search result from " + var8.get()), tempdata)
 ttk.Button(tab1, text="Search", width="30", command=search_number).grid(row=1, column=1, padx=30)
 #===============================================================#
 ttk.Label(tab4, text="Phone Number : ").grid(row=0, column=0, padx=50, pady=10)
@@ -80,6 +79,12 @@ def input_number():
     else:
         try:
             c.execute("INSERT INTO data(number, realname, grade, nickname, address, description) VALUES(?, ?, ?, ?, ?, ?)", [var1.get(), var3.get(), var5.get(), var2.get(), var4.get(), var6.get()])
+            var1.set("")
+            var2.set("")
+            var3.set("")
+            var4.set("")
+            var5.set("")
+            var6.set("")
             conn.commit()
             messagebox.showinfo("The Big Phonebook", "Successfullly save data")
         except:
@@ -94,11 +99,10 @@ def search_nickname():
         messagebox.showwarning("The Big Phonebook", "Please input nickname!")
     else:
         c.execute("SELECT * FROM data WHERE nickname=?", (var9.get(),))
-        Label(tab2, text="Result : ").grid(row=2, column=1, pady=20)
         for row in c.fetchall():
             tempdata = row
-            for list in tempdata:
-                            ttk.Label(tab2, text=list).grid( column=1)
+            var9.set("")
+            messagebox.showinfo(str("The search result from " + var9.get()), tempdata)
 ttk.Button(tab2, text="Search", width="30", command=search_nickname).grid(row=1, column=1, padx=30)
 #===============================================================#
 ttk.Label(tab3, text="Real Name : ").grid(row=0, column=0, padx=50, pady=30)
@@ -109,11 +113,10 @@ def search_realname():
         messagebox.showwarning("The Big Phonebook", "Please input realname!")
     else:
         c.execute("SELECT * FROM data WHERE realname=?", (var10.get(),))
-        Label(tab3, text="Result : ").grid(row=2, column=1, pady=20)
         for row in c.fetchall():
             tempdata = row
-            for list in tempdata:
-                            ttk.Label(tab3, text=list).grid( column=1)
+            var10.set("")
+            messagebox.showinfo(str("The search result from " + var10.get()), tempdata)
 ttk.Button(tab3, text="Search", width="30", command=search_realname).grid(row=1, column=1, padx=30)
 #===============================================================#
 ttk.Label(tab5, text="Phone Number : ").grid(row=0, column=0, padx=50, pady=30)
